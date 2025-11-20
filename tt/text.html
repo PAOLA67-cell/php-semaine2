@@ -1,0 +1,40 @@
+if (isset($operations[$op])) {
+                $resultat = null;
+                $erreur = false;
+                
+                switch ($op) {
+                    case '+':
+                    case 'addition':
+                        $resultat = $a + $b;
+                        break;
+                    case '-':
+                    case 'soustraction':
+                        $resultat = $a - $b;
+                        break;
+                    case '*':
+                    case 'multiplication':
+                        $resultat = $a * $b;
+                        break;
+                    case '/':
+                    case 'division':
+                        if ($b == 0) {
+                            echo '<div class="result error">Erreur : Division par zéro impossible !</div>';
+                            $erreur = true;
+                        } else {
+                            $resultat = $a / $b;
+                        }
+                        break;
+                    case '^':
+                    case 'puissance':
+                        $resultat = pow($a, $b);
+                        break;
+                }
+                
+                if (!$erreur && $resultat !== null) {
+                    echo '<div class="result">Résultat : ' . $a . ' ' . $op . ' ' . $b . ' = <strong>' . $resultat . '</strong></div>';
+                }
+            } else {
+                echo '<div class="result error">Erreur : Opération mathématique inconnue !</div>';
+            }
+        }
+        ?>
